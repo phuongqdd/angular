@@ -1,0 +1,96 @@
+<header class="bar">
+  <h2>Contacts</h2>
+
+  <div class="bar-actions">
+    <!-- Status dropdown -->
+    <div class="dropdown">
+      <button class="btn ghost" (click)="toggleStatusMenu()">
+        ALL <span class="mi">arrow_drop_down</span>
+      </button>
+      <div class="menu" *ngIf="showStatusMenu()" (click)="$event.stopPropagation()">
+        <button (click)="pickStatus('ALL')">All</button>
+        <button (click)="pickStatus('Salaried')">Salaried</button>
+        <button (click)="pickStatus('Terminated')">Terminated</button>
+        <button (click)="pickStatus('Commission')">Commission</button>
+      </div>
+    </div>
+
+    <button class="btn primary"><span class="mi">add</span> ADD CONTACT</button>
+    <button class="icon" title="Refresh"><span class="mi">refresh</span></button>
+    <button class="icon" title="Duplicate"><span class="mi">content_copy</span></button>
+    <button class="icon" title="Columns"><span class="mi">view_column</span></button>
+
+    <div class="search">
+      <span class="mi">search</span>
+      <input
+        type="text"
+        placeholder="Contact Search"
+        (input)="setQuery($any($event.target).value)"
+      />
+    </div>
+  </div>
+</header>
+
+<!-- Lưới: mặc định 1 cột; khi có detail -> 2 cột -->
+<div class="grid" [class.has-detail]="svc.selectedContact()">
+  <!-- BẢNG -->
+  <div class="table-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th class="w-40"></th>
+          <th (click)="sortBy('name')" class="sortable">Name</th>
+          <th (click)="sortBy('company')" class="sortable">Company</th>
+          <th (click)="sortBy('status')" class="sortable">Status</th>
+          <th (click)="sortBy('assignedTo')" class="sortable">Assigned to</th>
+          <th (click)="sortBy('phone')" class="sortable">Phone</th>
+          <th class="w-40"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let r of rows(); trackBy: trackById"
+          (click)="selectRow(r.id)"
+          [class.selected]="isSelected(r.id)"
+        >
+          <td><input type="checkbox" (click)="stop($event)" /></td>
+
+          <td>
+            <div class="namecell">
+              <img class="avatar" [src]="r.avatarUrl || 'logofit.png'" alt="avatar" />
+              <div>
+                <div class="fullname">{{ r.name }}</div>
+                <div class="subtitle">{{ r.title }}</div>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="ellipsis">{{ r.company }}</div>
+          </td>
+
+          <td>
+            <span class="dot" [ngClass]="statusClass(r.status)"></span>
+            <span [class.muted]="r.status === 'Terminated'">{{ r.status }}</span>
+          </td>
+
+          <td>{{ r.assignedTo }}</td>
+          <td>{{ r.phone }}</td>
+
+          <td class="more">
+            <button class="icon" (click)="stop($event)"><span class="mi">more_vert</span></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PANEL CHI TIẾT: chỉ hiện khi đã chọn -->
+  <app-contact-detail
+    *ngIf="svc.selectedContact() as c"
+    [contact]="c"
+    (close)="svc.selectById(null)"
+  >
+  </app-contact-detail>
+</div>

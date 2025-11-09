@@ -1,0 +1,78 @@
+<aside class="panel">
+  <header class="head">
+    <div class="title">
+      <b>{{ contact.name }}</b>
+      <span class="dot" [ngClass]="statusClass(contact.status)"></span>
+      <span class="status">{{ contact.status }}</span>
+    </div>
+    <button class="icon" (click)="close.emit()" title="Close"><span class="mi">close</span></button>
+  </header>
+
+  <div class="info-row">
+    <img class="avatar" [src]="contact.avatarUrl || 'logofit.png'" alt="avatar" />
+
+    <div class="info-detail">
+      <div class="info-grid">
+        <div class="label">Company:</div>
+        <div class="value link">{{ contact.company }}</div>
+
+        <div class="label">Position:</div>
+        <div class="value">{{ contact.title }}</div>
+
+        <div class="label">Assigned to:</div>
+        <div class="value link">{{ contact.assignedTo }}</div>
+      </div>
+    </div>
+  </div>
+
+  <ul class="lines">
+    <li><span class="mi">call</span> {{ contact.phone }}</li>
+    <li><span class="mi">mail</span> {{ contact.email }}</li>
+    <li *ngIf="contact.address"><span class="mi">place</span> {{ contact.address }}</li>
+  </ul>
+
+  <div class="btns">
+    <button class="btn ghost"><span class="mi">edit</span> EDIT</button>
+    <button class="btn ghost">DETAILS</button>
+    <div class="dropdown">
+      <button class="btn ghost">ACTIONS <span class="mi">arrow_drop_down</span></button>
+    </div>
+  </div>
+
+  <!-- Opportunities -->
+  <section class="card">
+    <button class="card-head" (click)="toggleOpp()">
+      <div>Opportunities</div>
+      <div class="right">
+        <span class="mi">add</span>
+        <span class="mi caret" [class.rot]="oppOpen">expand_more</span>
+      </div>
+    </button>
+    <div class="card-body" *ngIf="oppOpen">
+      <div class="opp" *ngFor="let o of contact.opportunities">
+        <div>{{ o.title }}</div>
+        <div class="amt" *ngIf="o.amount as a">{{ a | currency : 'USD' : 'symbol' }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section class="card">
+    <button class="card-head" (click)="toggleAct()">
+      <div>Activities</div>
+      <div class="right">
+        <span class="mi">add</span>
+        <span class="mi caret" [class.rot]="actOpen">expand_more</span>
+      </div>
+    </button>
+    <div class="card-body" *ngIf="actOpen">
+      <div class="act" *ngFor="let a of contact.activities">
+        <span class="mi">event</span>
+        <div>
+          <div class="title">{{ a.summary }}</div>
+          <div class="sub">{{ a.when | date }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</aside>

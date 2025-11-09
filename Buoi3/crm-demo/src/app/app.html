@@ -1,0 +1,12 @@
+<div class="shell" [class.collapsed]="!layout.sidebarOpen()">
+  <div class="left">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="right">
+    <app-topbar></app-topbar>
+    <div class="page">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

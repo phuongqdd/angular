@@ -1,0 +1,37 @@
+/* Khung 2 cột cho desktop */
+.shell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr; /* sidebar 240 */
+  grid-template-rows: 100%;
+}
+
+/* Khi collapsed: ẩn sidebar (rộng 0) */
+.shell.collapsed {
+  grid-template-columns: 0 1fr;
+}
+
+.shell.collapsed .left { 
+  transform: translateX(-240px); 
+}
+
+/* Cột trái/phải */
+.left {
+  overflow: hidden; /* để khi co về 0 không tràn */
+  transition: width .2s ease, 
+  transform .2s ease;
+  border-right: 1px solid #e5e7eb;
+}
+.right {
+  display: flex; 
+  flex-direction: column; 
+  min-width: 0;
+}
+
+/* Nội dung trang (bên dưới topbar) */
+.page {
+  flex: 1;
+  padding: 12px 16px;
+  background: #f7f8fa;
+  overflow: auto;
+}

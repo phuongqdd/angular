@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+/* Thanh header cố định trên cùng */
+.topbar {
+  position: sticky; 
+  top: 0; 
+  z-index: 100;
+  height: 56px; 
+  background: #ffffff;
+  display: grid; 
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+/* Trái */
+.left { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.brand { 
+    font-weight: 600; 
+    white-space: nowrap; 
+}
+
+/* Giữa (search) */
+.center { 
+    display: flex; 
+    justify-content: center; 
+}
+
+.search {
+  width: 100%; 
+  max-width: 520px; 
+  height: 36px;
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  background: #f4f6f8; 
+  border-radius: 8px; 
+  padding: 0 10px;
+  border: 1px solid #e6e8eb;
+}
+.search input {
+  border: none; 
+  outline: none; 
+  background: transparent;
+  flex: 1; 
+  font-size: 14px;
+}
+
+/* Phải (chuông + avatar) */
+.right { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    justify-content: flex-end; }
+
+.icon-btn {
+  position: relative;
+  width: 36px; 
+  height: 36px; 
+  border: none;
+  background: transparent; 
+  border-radius: 8px; 
+  cursor: pointer;
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.icon-btn:hover { 
+    background: #f4f6f8; 
+}
+
+.badge {
+  position: absolute; 
+  top: -4px; 
+  right: -4px;
+  background: #ef4444; 
+  color: #fff; 
+  border-radius: 999px;
+  font-size: 11px; 
+  line-height: 1; 
+  padding: 3px 6px;
+}
+
+.user { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.user img {
+  width: 28px; 
+  height: 28px; 
+  border-radius: 50%;
+  display: block;
+}
+.user .name { 
+    font-size: 14px; 
+    color: #111827; 
+}
+
+
