@@ -1,56 +1,74 @@
 <aside class="sidebar">
-  <!-- CRM -->
-  <div class="group">
-    <button class="group-head" (click)="toggle('crm')">
-      <div class="head-left">
-        <span class="material-icons">person</span>
-        <span class="head-title">CRM</span>
-      </div>
-      <span class="material-icons chevron" [class.rot]="open.crm">expand_more</span>
-    </button>
+  <div class="sb-body">
+    <!-- CRM -->
+    <div class="group">
+      <button class="group-head" (click)="toggle('crm')">
+        <div class="head-left">
+          <span class="material-icons">person</span>
+          <span class="head-title">CRM</span>
+        </div>
+        <span class="material-icons chevron" [class.rot]="open.crm">expand_more</span>
+      </button>
 
-    <ul class="sub" [class.open]="open.crm">
-      <li class="sub-item">
-        <a routerLink="/contacts" routerLinkActive="active">
-          <span class="circle"></span> Contact List
-        </a>
-      </li>
-      <li class="sub-item">
-        <a><span class="circle"></span> Contact Details</a>
-      </li>
-    </ul>
+      <ul class="sub" [class.open]="open.crm">
+        <li class="sub-item">
+          <a routerLink="/contacts" routerLinkActive="active">
+            <span class="circle"></span> Contact List
+          </a>
+        </li>
+        <li class="sub-item">
+          <a><span class="circle"></span> Contact Details</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PLANNING -->
+    <div class="group">
+      <button class="group-head" (click)="toggle('planning')">
+        <div class="head-left">
+          <span class="material-icons">event</span>
+          <span class="head-title">Planning</span>
+        </div>
+        <span class="material-icons chevron" [class.rot]="open.planning">expand_more</span>
+      </button>
+
+      <ul class="sub" [class.open]="open.planning">
+        <li class="sub-item">
+          <a><span class="circle"></span> Task List</a>
+        </li>
+        <li class="sub-item">
+          <a><span class="circle"></span> Task Details</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="group">
+      <button class="group-head" (click)="toggle('analytics')">
+        <div class="head-left">
+          <span class="material-icons">insert_chart_outlined</span>
+          <span class="head-title">Analytics</span>
+        </div>
+        <span class="material-icons chevron" [class.rot]="open.analytics">expand_more</span>
+      </button>
+
+      <ul class="sub" [class.open]="open.analytics">
+        <li class="sub-item">
+          <a><span class="circle"></span> Dashboard</a>
+        </li>
+        <li class="sub-item">
+          <a><span class="circle"></span> Sales Report</a>
+        </li>
+        <li class="sub-item">
+          <a><span class="circle"></span> Geography</a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <!-- PLANNING -->
-  <div class="group">
-    <button class="group-head" (click)="toggle('planning')">
-      <div class="head-left">
-        <span class="material-icons">event</span>
-        <span class="head-title">Planning</span>
-      </div>
-      <span class="material-icons chevron" [class.rot]="open.planning">expand_more</span>
-    </button>
-
-    <ul class="sub" [class.open]="open.planning">
-      <li class="sub-item"><a><span class="circle"></span> Task List</a></li>
-      <li class="sub-item"><a><span class="circle"></span> Task Details</a></li>
-    </ul>
-  </div>
-
-  <!-- ANALYTICS -->
-  <div class="group">
-    <button class="group-head" (click)="toggle('analytics')">
-      <div class="head-left">
-        <span class="material-icons">insert_chart_outlined</span>
-        <span class="head-title">Analytics</span>
-      </div>
-      <span class="material-icons chevron" [class.rot]="open.analytics">expand_more</span>
-    </button>
-
-    <ul class="sub" [class.open]="open.analytics">
-      <li class="sub-item"><a><span class="circle"></span> Dashboard</a></li>
-      <li class="sub-item"><a><span class="circle"></span> Sales Report</a></li>
-      <li class="sub-item"><a><span class="circle"></span> Geography</a></li>
-    </ul>
-  </div>
+  <footer class="sb-foot">
+    <div class="copy">
+      Copyright© {{ year }}<br> <a href="https://fit.hnue.edu.vn/" target="_blank">DoPhuong</a>
+    </div>
+  </footer>
 </aside>

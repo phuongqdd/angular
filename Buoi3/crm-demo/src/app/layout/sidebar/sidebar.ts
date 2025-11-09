@@ -10,6 +10,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./sidebar.css']
 })
 export class Sidebar {
+
+   year = new Date().getFullYear();
+
   // trạng thái mở nhóm
   open = {
     crm: true,
